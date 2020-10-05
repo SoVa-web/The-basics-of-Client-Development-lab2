@@ -1,0 +1,37 @@
+body{
+    margin-top: 10px; 
+    width: 100%; 
+}
+
+.toolbar{
+    width: 100%;
+    background-color: chocolate;
+}
+
+
+.textarea{
+    margin-left: 285px;
+    background-color: brown;
+}
+
+.ul{
+ background: rgb(51, 37, 37); 
+ margin-right: 800px;
+ padding: 10px;
+}
+
+.row{
+    background-color: darkseagreen;
+}
+
+.toolbar_add_btn{
+    background-color: rgb(117, 113, 50);
+}
+
+.toolbar_delete_btn{
+    background-color: rgb(117, 113, 50);
+}
+
+.toolbar_edit_btn{
+    background-color: rgb(117, 113, 50);
+}
