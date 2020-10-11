@@ -1,6 +1,18 @@
 body{
     margin-top: 10px; 
     width: 100%; 
+    font-size: 24px;
+    background-color: #181817;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #252422;
+    width: 1400px;
+    
+    margin: 0 auto;
+    
 }
 
 .toolbar{
@@ -8,16 +20,45 @@ body{
     background-color: chocolate;
 }
 
-
-.textarea{
-    margin-left: 285px;
+#noteDate{
     background-color: brown;
+    margin-left: 300px;
+    padding: 10px;
+    width: 400px;
+    font-size: 10px;
+    height: 5px;
+    
+}
+
+
+
+#noteName{
+    background-color: brown;
+    margin-left: 300px;
+    height: 20px;
+    padding: 10px;
+    width: 400px;
+    font-size: 20px;
+   
+    
+}
+
+#noteText{
+    margin-left: 300px;
+    background-color: brown;
+    
+    padding: 10px;
+    width: 400px;
+    font-size: 15px;
+   
+    
 }
 
 .ul{
- background: rgb(51, 37, 37); 
- margin-right: 800px;
- padding: 10px;
+ background-color: blanchedalmond; 
+ width: 200px;
+
+ 
 }
 
 .row{

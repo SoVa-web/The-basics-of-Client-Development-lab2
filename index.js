@@ -2,12 +2,20 @@ const notes = [
     {
         id:1,
         title:"kus",
-        tetx:"123"
+        tetx:"123", 
+        data:"12-04-2020"
     },
     {
         id:2,
         title:"kuss",
-        tetx:"1234"
+        tetx:"1234" ,
+        data:"03-03-2020"
+    },
+    {
+        id:3,
+        title:"kushjs",
+        tetx:"1234hj" ,
+        data:"03-0-2020"
     }
 ]
 
@@ -22,11 +30,3 @@ function add_ul(){
 
 add_ul()
 
-function add_el(){
-const add = document.getElementById("add_btn")
-add_btn.onclick = function(){
-   
-}
-}
-
-add_el()
