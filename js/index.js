@@ -1,6 +1,19 @@
-let notes = new Array
 
 
+function afterRedaunload(){
+    let stringResult = ""
+    for(var i =0; i < localStorage.length; i++){
+        let a = JSON.parse(localStorage.key(i))
+        let b = JSON.parse(localStorage.getItem(a))
+        stringResult = stringResult+'<li id="li'+i+'"><h1>'+b.name+'</h1>'+'<h2>'+b.text+'</h2>'
+        +'<button class="delete-btn" id="delete_button'+i+'">Delete</button>'+'</li>'
+        
+    }
+    var u = document.getElementById("notes")
+    u.innerHTML = stringResult
+}
+
+afterRedaunload()
 
 function addNote(){
     let n = document.getElementById("note-title")
@@ -11,16 +24,17 @@ function addNote(){
         "name": n.value,
         "text": t.value
     }
-    console.log(noteContent.idNote)
-    notes.push(noteContent)
     var serialObj = JSON.stringify(noteContent);
     localStorage.setItem(idN, serialObj)
     var stringResult = ""
     for(var i =0; i < localStorage.length; i++){
-        stringResult = stringResult+'<li id="li'+i+'"><h1>'+localStorage.key(i).name+'</h1>'+'<h2>'+localStorage.key(i).text+'</h2>'
+        let a = JSON.parse(localStorage.key(i))
+        let b = JSON.parse(localStorage.getItem(a))
+        stringResult = stringResult+'<li id="li'+i+'"><h1>'+b.name+'</h1>'+'<h2>'+b.text+'</h2>'
         +'<button class="delete-btn" id="delete_button'+i+'">Delete</button>'+'</li>'
         
     }
+    console.log(localStorage.length)
     var u = document.getElementById("notes")
     u.innerHTML = stringResult
 }
