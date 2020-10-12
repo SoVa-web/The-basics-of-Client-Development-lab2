@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Notes</title> 
-    <link rel="stylesheet"  
-    href="style.css"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../The-basics-of-Client-Development-lab2/css/styles.css">
+    <title>Notes App</title>
 </head>
 <body>
-   <div>
-       <div class="container">
-           <div class="row">
-               <div class="toolbar">
-                   <div class="col">
-                       <button id="add_btn" class = "toolbar_add_btn">Add</button>
-                       <button id="delete_btn" class = "toolbar_delete_btn">Delete</button>
-                       <button id="edit_btn" class = "toolbar_edit_btn">Edit</button>
-                   </div>
-               </div>
-           </div>
-           <div class="row">
-              <div class="col-2">
-                <ul id = "notes" class="ul" type="text" ></ul>
-              </div>
-              <div class="col-10">
-                <div id="info" class="note">
-                    <input id="noteName" class="input" type="text" placeholder="Enter name....">
-                    <input id="noteDate" class="data" type="date">
-                    <textarea id="noteText" class="textarea" type="text" rows= 10 placeholder="Enter text...." ></textarea>
-                </div>
-              </div>
-           </div>
-       </div>
-   </div>
-   <script src = "./index.js"></script>
+<div class="container">
+    <div class="notes-container">
+        <ul class="notes-list" id="notes">
+            
+        </ul>
+    </div>
+    <div class="note-view">
+        <input id="note-title" id="name_note" type="text" placeholder="Enter name..." />
+        <button class="add-btn" id="add_button">Add</button>
+        <textarea class="note-text" id="text_note" type="text" placeholder="Enter note..."></textarea>
+    </div>
+</div>
+<script src="../The-basics-of-Client-Development-lab2/js/index.js"></script>
+
+
+
 </body>
 </html>
