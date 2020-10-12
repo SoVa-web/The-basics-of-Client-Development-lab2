@@ -54,4 +54,5 @@ body {
 }
 .note-view button {
     cursor: pointer;
+    width: 40px;
 }
