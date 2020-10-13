@@ -17,22 +17,19 @@ body {
     border: 1px solid black;
     overflow-y: scroll;
 }
-.notes-container .notes-list {
+.notes-container #notes {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
-.notes-container .notes-list li {
-    border: 1px solid black;
-    position: relative;
+
+#notes li{
     cursor: pointer;
-    padding: 10px;
 }
-.notes-container .notes-list li button {
-    position: absolute;
-    top: 18px;
-    right: 5px;
-    cursor: pointer;
+
+#notes li button{
+    margin-left:  auto;
+     background-color: darkolivegreen;
 }
 
 .note-view {
@@ -52,15 +49,21 @@ body {
     width: calc(100% - 10px);
     height: calc(100% - 38px);
 }
-.add_button {
+ #add_button{
+   
+     background-color: darkolivegreen;
     cursor: pointer;
-    width: 40px;
+    width: 100px;
 }
-.new_button {
+ #new_button{
+   
+     background-color: darkolivegreen;
     cursor: pointer;
-    width: 40px;
+    width: 100px;
 }
-.edit_button{
+#edit_button  {
+   
+     background-color: darkolivegreen;
     cursor: pointer;
-    width: 40px;
+    width: 100px;
 }

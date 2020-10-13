@@ -2,25 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../The-basics-of-Client-Development-lab2/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/bootstrap.min(1).css">
     <title>Notes App</title>
 </head>
 <body>
 <div class="container">
     <div class="notes-container">
-        <ul class="notes-list" id="notes">
+        <ul class="list-group" id="notes">
             
         </ul>
     </div>
     <div class="note-view">
-        <input id="note-title" id="name_note" type="text" placeholder="Enter name..." />
-        <button class="add-btn" id="add_button">Save</button>
+        <input class="note-title" id="name_note" type="text" placeholder="Enter name..." />
+        <button class="add-btn btn btn-success" id="add_button">Save</button>
+        <button class="edit-btn btn btn-success" id="edit_button">Edit</button>
+        <button class="new-btn btn btn-success" id="new_button">New</button>
         <textarea class="note-text" id="text_note" type="text" placeholder="Enter note..."></textarea>
     </div>
 </div>
-<script src="../The-basics-of-Client-Development-lab2/js/index.js"></script>
-
-
-
+<script src="js/index.js"></script>
 </body>
 </html>
