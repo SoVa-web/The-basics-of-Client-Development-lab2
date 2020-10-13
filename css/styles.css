@@ -52,7 +52,15 @@ body {
     width: calc(100% - 10px);
     height: calc(100% - 38px);
 }
-.note-view button {
+.add_button {
+    cursor: pointer;
+    width: 40px;
+}
+.new_button {
+    cursor: pointer;
+    width: 40px;
+}
+.edit_button{
     cursor: pointer;
     width: 40px;
 }
