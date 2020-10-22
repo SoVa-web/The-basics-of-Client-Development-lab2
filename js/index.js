@@ -16,12 +16,12 @@ function afterRedaunload(){
         if(b.name.length >= 6){
             b.name = b.name.slice(0, 6)+"..."
         }
-        if(b.text.length >= 6){
-            b.text = b.text.slice(0, 6)+"..."
+        if(b.text.length >= 7){
+            b.text = b.text.slice(0, 7)+"..."
         }
         stringResult = stringResult+'<li class="list-group-item d-flex"  id="li'+i+'"><div><h1> '+b.name+'</h1>'+'<h2>'+b.text+'</h2></div>'
-         +'<button class="see-btn btn btn-success"  id="see_button'+i+'">View</button>'
-         +'<button class="delete-btn btn btn-success" id="delete_button'+i+'">Delete</button>'
+         +'<div id="nota"><ul class="list-group "><button class="btn btn-warning"  id="see_button'+i+'">View</button>'
+         +'<button class="btn btn-warning" id="delete_button'+i+'">Delete</button></ul></div>'
         +'</li>'
         window.location.hash = "id"+a
     }
@@ -31,7 +31,6 @@ function afterRedaunload(){
         var liAny = document.getElementById('see_button'+i)
        liAny.addEventListener('click', viewNotes(i))
        var btn = document.getElementById('delete_button'+i) 
-       btn.addEventListener('click', clearing(i))
        btn.addEventListener('click', listener(i))
    }
     
@@ -58,22 +57,17 @@ function listener(index) {
         let a = JSON.parse(localStorage.key(index))
         localStorage.removeItem(a)
         afterRedaunload()
+        var addBut = document.getElementById('add_button')
+        addBut.hidden = false
+        let nameView = document.getElementById("name_note")
+        let textView = document.getElementById("text_note")
+        nameView.value =""
+        textView.value =""
     }
    
 }
 
-function clearing(index) {
-	return function() {
-        console.log(777)
-         let nameView = document.getElementById("name_note")
-        let textView = document.getElementById("text_note")
-        nameView.disabled = false
-        textView.disabled = false
-        nameView.value = ""
-        textView.value = ""
-    }
-   
-}
+
 
 function viewNotes(index){
     
@@ -93,7 +87,7 @@ function viewNotes(index){
     nameView.disabled = true
     textView.disabled = true
     window.location.hash = "id"+a
-    //saveBut.addEventListener("click", saveNote(index))
+    saveBut.addEventListener("click", saveNote(index))
    }
 }
 
@@ -115,14 +109,16 @@ function addNote(){
 }
 
 
-/*function saveNote(index){
+function saveNote(index){
     return function(){
+        let number = localStorage.length
+
         let a = JSON.parse(localStorage.key(index))
         localStorage.removeItem(a)
         afterRedaunload()
         let n = document.getElementById("name_note")
         let t = document.getElementById("text_note")
-        let idN = index
+        let idN = Math.floor(Math.random() * Math.floor(10000))
         let noteContent = {
             "name": n.value,
             "text": t.value
@@ -133,9 +129,11 @@ function addNote(){
         afterRedaunload()
         n.value = ""
         t.value = ""
+        let button = document.getElementById("add_button")
+        button.hidden = false
     }
    
-}*/
+}
 
 
 function editNote(){
