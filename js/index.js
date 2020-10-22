@@ -11,6 +11,39 @@ let newBut = document.getElementById('new_button');
 let nameView = document.getElementById("name_note")
 let textView = document.getElementById("text_note")
 
+//routing
+function routing(hashUrl){
+    let idUrl = hashUrl.slice(1)
+     for(var i =0; i < localStorage.length; i++){
+        let a = JSON.parse(localStorage.key(i))
+      if(idUrl == a){
+       console.log(a)
+       let b = JSON.parse(localStorage.getItem(a))
+       saveBut.hidden = true
+       addBut.hidden = true
+       editBut.hidden  = false
+       nameView.value = b.name
+       textView.value = b.text
+       nameView.disabled = true
+       textView.disabled = true
+       currentNote = i
+       break
+      }else{
+       window.location.hash = 0
+       addBut.hidden = false
+       editBut.hidden = true
+       saveBut.hidden = true
+       nameView.disabled = false
+       textView.disabled = false
+       nameView.value = ""
+       textView.value = ""
+      }
+     }
+}
+window.addEventListener('load', routing(window.location.hash));
+
+
+
 function afterRedaunload(){
     saveBut.hidden = true
     editBut.hidden  = true
@@ -27,7 +60,7 @@ function afterRedaunload(){
         if(b.text.length >= 7){
            b.text = b.text.slice(0, 7)+"..."
         } 
-        stringResult = stringResult+'<li class="list-group-item d-flex"  id="li'+i+'"><div><h1> '+b.name+'</h1>'+'<h2>'+b.text+'</h2></div>'
+        stringResult = stringResult+'<li  class="list-group-item d-flex"  id="li'+i+'"><div><h1> '+b.name+'</h1>'+'<h2>'+b.text+'</h2></div>'
          +'<div id="nota"><ul class="list-group "><button class="btn btn-warning"  id="see_button'+i+'">View</button>'
          +'<button class="btn btn-warning" id="delete_button'+i+'">Delete</button></ul></div>' +'</li>'
     }
@@ -50,6 +83,7 @@ function newNote(){
     textView.disabled = false
     nameView.value = ""
     textView.value = ""
+    window.location.hash = a
 }
 
 function delNote(index) {
@@ -60,6 +94,7 @@ function delNote(index) {
         addBut.hidden = false
         nameView.value =""
         textView.value =""
+        window.location.hash = a
     }
    
 }
@@ -76,7 +111,7 @@ function viewNotes(index){
     textView.value = b.text
     nameView.disabled = true
     textView.disabled = true
-    window.location.hash = "id"+a
+    window.location.hash = a
     currentNote = index
    }
 }
@@ -95,6 +130,7 @@ function addNote(){
     afterRedaunload()
     n.value = ""
     t.value = ""
+    window.location.hash = a
 }
 
 
