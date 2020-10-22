@@ -1,10 +1,12 @@
 let obj = new Object
+let currentNote = null
+let saveBut = document.getElementById("save_button")
+saveBut.addEventListener("click", saveNote)
 
 function afterRedaunload(){
     let nameView = document.getElementById("name_note")
     let textView = document.getElementById("text_note")
     let editBut = document.getElementById("edit_button")
-    let saveBut = document.getElementById("save_button")
     saveBut.hidden = true
     editBut.hidden  = true
     nameView.disabled = false
@@ -19,7 +21,8 @@ function afterRedaunload(){
         if(b.text.length >= 7){
             b.text = b.text.slice(0, 7)+"..."
         }
-        stringResult = stringResult+'<li class="list-group-item d-flex"  id="li'+i+'"><div><h1> '+b.name+'</h1>'+'<h2>'+b.text+'</h2></div>'
+        stringResult = stringResult+'<li class="list-group-item d-flex"  id="li'+i+'"><div><h1> '+b.name+'</h1>'
+        +'<h2>'+b.text+'</h2></div>'
          +'<div id="nota"><ul class="list-group "><button class="btn btn-warning"  id="see_button'+i+'">View</button>'
          +'<button class="btn btn-warning" id="delete_button'+i+'">Delete</button></ul></div>'
         +'</li>'
@@ -42,7 +45,6 @@ function newNote(){
     addBut.hidden = false
     let editBut = document.getElementById("edit_button")
     editBut.hidden = true
-    let saveBut = document.getElementById("save_button")
     saveBut.hidden = true
     let nameView = document.getElementById("name_note")
     let textView = document.getElementById("text_note")
@@ -68,9 +70,7 @@ function listener(index) {
 }
 
 
-
 function viewNotes(index){
-    
    return function(){
     let a = JSON.parse(localStorage.key(index))
     let b = JSON.parse(localStorage.getItem(a))
@@ -78,7 +78,6 @@ function viewNotes(index){
     let textView = document.getElementById("text_note")
     let editBut = document.getElementById("edit_button")
     let addBut = document.getElementById("add_button")
-    let saveBut = document.getElementById("save_button")
     saveBut.hidden = true
     addBut.hidden = true
     editBut.hidden  = false
@@ -87,7 +86,7 @@ function viewNotes(index){
     nameView.disabled = true
     textView.disabled = true
     window.location.hash = "id"+a
-    saveBut.addEventListener("click", saveNote(index))
+    currentNote = index
    }
 }
 
@@ -109,10 +108,12 @@ function addNote(){
 }
 
 
-function saveNote(index){
-    return function(){
+function saveNote(){
+        let index = currentNote
+        console.log(index)
+        if(index === null)
+        return
         let number = localStorage.length
-
         let a = JSON.parse(localStorage.key(index))
         localStorage.removeItem(a)
         afterRedaunload()
@@ -131,15 +132,12 @@ function saveNote(index){
         t.value = ""
         let button = document.getElementById("add_button")
         button.hidden = false
-    }
-   
 }
 
 
 function editNote(){
     let button = document.getElementById("add_button")
     button.hidden = true
-    let saveBut = document.getElementById("save_button")
     saveBut.hidden = false
     let nameView = document.getElementById("name_note")
     let textView = document.getElementById("text_note")
