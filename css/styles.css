@@ -12,7 +12,7 @@ body {
 }
 .notes-container {
     float: left;
-    width: 300px;
+    width: 350px;
     height: 100%;
     border: 1px solid black;
     overflow-y: scroll;
@@ -27,15 +27,18 @@ body {
     cursor: pointer;
 }
 
-#notes li button{
-    margin-left:  auto;
+
+#notes li button  {
+    margin-left: auto;
      background-color: darkolivegreen;
 }
+
+
 
 .note-view {
     float: left;
     height: 100%;
-    width: calc(100% - 304px);
+    width: calc(100% - 354px);
     border: 1px solid black;
 }
 .note-view input, .note-view textarea {
@@ -66,4 +69,11 @@ body {
      background-color: darkolivegreen;
     cursor: pointer;
     width: 100px;
+}
+
+#save_button  {
+   
+    background-color: darkolivegreen;
+   cursor: pointer;
+   width: 100px;
 }
