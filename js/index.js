@@ -27,8 +27,10 @@ function routing(hashUrl){
        nameView.disabled = true
        textView.disabled = true
        currentNote = i
+       afterRedaunload(idUrl)
        break
       }else{
+        afterRedaunload(0)
        window.location.hash = 0
        addBut.hidden = false
        editBut.hidden = true
@@ -44,7 +46,8 @@ window.addEventListener('load', routing(window.location.hash));
 
 
 
-function afterRedaunload(){
+function afterRedaunload(idUrl){
+    window.location.hash = idUrl
     saveBut.hidden = true
     editBut.hidden  = true
     nameView.disabled = false
@@ -73,7 +76,7 @@ function afterRedaunload(){
        delBut.addEventListener('click', delNote(i))
    }
 }
-afterRedaunload()
+
 
 function newNote(){
     addBut.hidden = false
@@ -83,7 +86,7 @@ function newNote(){
     textView.disabled = false
     nameView.value = ""
     textView.value = ""
-    window.location.hash = a
+    window.location.hash = 0
 }
 
 function delNote(index) {
@@ -94,7 +97,7 @@ function delNote(index) {
         addBut.hidden = false
         nameView.value =""
         textView.value =""
-        window.location.hash = a
+        window.location.hash = 0
     }
    
 }
@@ -130,7 +133,7 @@ function addNote(){
     afterRedaunload()
     n.value = ""
     t.value = ""
-    window.location.hash = a
+    window.location.hash = 0
 }
 
 
@@ -152,6 +155,7 @@ function saveNote(){
         nameView.value = ""
         textView.value = ""
         addBut.hidden = false
+        window.location.hash = 0
 }
 
 
