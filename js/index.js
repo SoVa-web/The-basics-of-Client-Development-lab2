@@ -62,7 +62,9 @@ function afterRedaunload(){
         if(b.text.length >= 7){
            b.text = b.text.slice(0, 7)+"..."
         } 
-        stringResult = stringResult+'<li  class="list-group-item d-flex"  id="li'+i+'"><div><h1> '+b.name+'</h1>'+'<h2>'+b.text+'</h2></div>'
+        stringResult = stringResult+'<li  class="list-group-item d-flex"  id="li'+i+'"><div><h1> '
+        +b.name+'</h1>'+'<h2>'
+        +b.text+'</h2></div>'
          +'<button class="btn btn-warning" id="delete_button'+i+'">Delete</button>' +'</li>'
     }
     var u = document.getElementById("notes")
