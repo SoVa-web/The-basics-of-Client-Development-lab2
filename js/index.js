@@ -1,5 +1,6 @@
 let obj = new Object
 let currentNote = null
+let flag = false
 let saveBut = document.getElementById("save_button")
  saveBut.addEventListener("click", saveNote)
 let editBut = document.getElementById("edit_button")
@@ -13,11 +14,11 @@ let textView = document.getElementById("text_note")
 
 //routing
 function routing(hashUrl){
+    afterRedaunload()
     let idUrl = hashUrl.slice(1)
      for(var i =0; i < localStorage.length; i++){
         let a = JSON.parse(localStorage.key(i))
       if(idUrl == a){
-       console.log(a)
        let b = JSON.parse(localStorage.getItem(a))
        saveBut.hidden = true
        addBut.hidden = true
@@ -27,10 +28,9 @@ function routing(hashUrl){
        nameView.disabled = true
        textView.disabled = true
        currentNote = i
-       afterRedaunload(idUrl)
+       window.location.hash = a
        break
       }else{
-        afterRedaunload(0)
        window.location.hash = 0
        addBut.hidden = false
        editBut.hidden = true
@@ -46,8 +46,7 @@ window.addEventListener('load', routing(window.location.hash));
 
 
 
-function afterRedaunload(idUrl){
-    window.location.hash = idUrl
+function afterRedaunload(){
     saveBut.hidden = true
     editBut.hidden  = true
     nameView.disabled = false
@@ -64,13 +63,12 @@ function afterRedaunload(idUrl){
            b.text = b.text.slice(0, 7)+"..."
         } 
         stringResult = stringResult+'<li  class="list-group-item d-flex"  id="li'+i+'"><div><h1> '+b.name+'</h1>'+'<h2>'+b.text+'</h2></div>'
-         +'<div id="nota"><ul class="list-group "><button class="btn btn-warning"  id="see_button'+i+'">View</button>'
-         +'<button class="btn btn-warning" id="delete_button'+i+'">Delete</button></ul></div>' +'</li>'
+         +'<button class="btn btn-warning" id="delete_button'+i+'">Delete</button>' +'</li>'
     }
     var u = document.getElementById("notes")
     u.innerHTML = stringResult
     for(var i=0; i < localStorage.length; i++){
-       var seeAny = document.getElementById('see_button'+i)
+       var seeAny = document.getElementById('li'+i)
        seeAny.addEventListener('click', viewNotes(i))
        var delBut = document.getElementById('delete_button'+i) 
        delBut.addEventListener('click', delNote(i))
@@ -91,6 +89,7 @@ function newNote(){
 
 function delNote(index) {
 	return function() {
+        flag = true
         let a = JSON.parse(localStorage.key(index))
         localStorage.removeItem(a)
         afterRedaunload()
@@ -105,6 +104,10 @@ function delNote(index) {
 
 function viewNotes(index){
    return function(){
+   if(flag === true){
+       flag = false
+       return
+   }else{
     let a = JSON.parse(localStorage.key(index))
     let b = JSON.parse(localStorage.getItem(a))
     saveBut.hidden = true
@@ -116,6 +119,7 @@ function viewNotes(index){
     textView.disabled = true
     window.location.hash = a
     currentNote = index
+   }
    }
 }
 
@@ -155,7 +159,6 @@ function saveNote(){
         nameView.value = ""
         textView.value = ""
         addBut.hidden = false
-        window.location.hash = 0
 }
 
 
@@ -165,13 +168,3 @@ function editNote(){
     nameView.disabled = false
     textView.disabled = false
 }
-
-
-
-
-
-
-    
-
-
-
