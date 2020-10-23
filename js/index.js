@@ -16,7 +16,7 @@ let textView = document.getElementById("text_note")
 function routing(hashUrl){
     afterRedaunload()
     let idUrl = hashUrl.slice(1)
-     for(var i =0; i < localStorage.length; i++){
+     for( let i =0; i < localStorage.length; i++){
         let a = JSON.parse(localStorage.key(i))
       if(idUrl == a){
        let b = JSON.parse(localStorage.getItem(a))
@@ -52,7 +52,7 @@ function afterRedaunload(){
     nameView.disabled = false
     textView.disabled = false
     let stringResult = ""
-    for(var i =0; i < localStorage.length; i++){
+    for(let i =0; i < localStorage.length; i++){
         let a = JSON.parse(localStorage.key(i))
         let b = JSON.parse(localStorage.getItem(a))
         if(b.name.length >= 6){
@@ -62,14 +62,14 @@ function afterRedaunload(){
         if(b.text.length >= 7){
            b.text = b.text.slice(0, 7)+"..."
         } 
-        stringResult = stringResult+'<li  class="list-group-item d-flex"  id="li'+i+'"><div><h1> '
+        stringResult = stringResult+'<li  class="list-group-item d-flex"  " style="border-radius:20px;"  id="li'+i+'"><div><h1> '
         +b.name+'</h1>'+'<h2>'
         +b.text+'</h2></div>'
-         +'<button class="btn btn-warning" id="delete_button'+i+'">Delete</button>' +'</li>'
+         +'<button class="btn btn-warning " style="border-radius:20px;" id="delete_button'+i+'">Delete</button>' +'</li>'
     }
     var u = document.getElementById("notes")
     u.innerHTML = stringResult
-    for(var i=0; i < localStorage.length; i++){
+    for(let i=0; i < localStorage.length; i++){
        var seeAny = document.getElementById('li'+i)
        seeAny.addEventListener('click', viewNotes(i))
        var delBut = document.getElementById('delete_button'+i) 
@@ -129,6 +129,22 @@ function addNote(){
     let n = document.getElementById("name_note")
     let t = document.getElementById("text_note")
     let idN = Math.floor(Math.random() * Math.floor(10000))
+    let len = localStorage.length
+    let f = true
+    if(len > 0){
+       while(f === true){
+            idN = Math.floor(Math.random() * Math.floor(10000))
+        for( let i =0; i < len; i++){
+            let a = JSON.parse(localStorage.key(i))
+            if(a == idN){
+                f = true
+                break
+            }else{
+                f = false
+            }
+        }
+       }
+    }
     let noteContent = {
         "name": n.value,
         "text": t.value

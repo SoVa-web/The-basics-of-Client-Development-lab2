@@ -81,7 +81,7 @@ body {
     padding: 5px;
 }
 .note-view input {
-    width: calc(100% - 54px);
+    width: calc(100% - 50px);
     background-color: rgb(167, 160, 73);
 }
 .note-view textarea {
